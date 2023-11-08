@@ -1,0 +1,87 @@
+<alert type="success text-align-center" *ngIf="alreadyApplied">
+  <div class="d-flex justify-content-center align-items-center">
+    <strong>Natječaj prijavljen!</strong>
+  </div>
+</alert>
+<div class="container-xl px-4 mt-4" *ngIf="listing">
+  <div class="row">
+      <div class="col-xl-4">
+          <div class="card mb-4">
+              <div class="card-header" *ngIf="listing.user"><b>Korisnik: {{listing.user.firstName}}  {{listing.user.lastName}}</b></div>
+              <div class="card-body text-center">
+                  <img class="rounded-circle mb-3 w-50" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+              </div>
+          </div>
+      </div>
+      <div class="col-xl-8">
+          <div class="card mb-3">
+              <div class="card-header">Natječaj</div>
+              <div class="card-body" *ngIf="listing.category">
+                      <div class="mb-3">
+                          <h5 class="mb-1"><mat-icon class="me-1">work</mat-icon>Potreba: </h5>
+                          <p>{{listing.category.name}}</p>
+                      </div>
+                      <div class="row gx-3">
+                          <div class="col-md-6">
+                              <h5 class="mb-1"><mat-icon class="me-1 location">location_on</mat-icon>Lokacija:</h5>
+                              <p>{{listing.city.name}}, {{listing.city.county.name}}</p>
+                            </div>
+                      </div>
+                      <div class="row gx-3">
+                          <div class="col-md-12">
+                              <h5 class="mb-1"><mat-icon> chat_bubble</mat-icon> Opis natječaja:</h5>
+                              <p>{{listing.description}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae excepturi suscipit iure atque voluptatum provident ea nobis laboriosam consectetur ad, expedita debitis molestias illo soluta? Ea eius numquam atque officia? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum architecto ipsa enim aut sapiente pariatur quidem dignissimos, aliquam maxime eaque nobis id? Ea iure nesciunt id error accusantium, minus accusamus.</p>
+                            </div>
+                      </div>
+                      <div class="row gx-3">
+                        <div class="col-md-12">
+                            <h5 class="mb-2"><mat-icon>image</mat-icon> Priložene slike:</h5>
+                            <div class="d-flex">
+                              <ngx-gallery class="w-100" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-primary mb-3" type="button" (click)="openModal(template)" *ngIf="!alreadyApplied">Prijavi se na natječaj</button>
+      </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">FORMA ZA PRIJAVU NA NATJEČAJ</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="listingForm" (submit)="onSubmit()">
+  <div class="modal-body">
+    <h5 class="mb-2 card-header">Opis rješenja:</h5>
+    <label class="mb-2">Molimo da u opisu rješenja navedete metode za rješavanje problema.</label>
+  <textarea class="form-control" type="text" rows="5" formControlName="description"
+  [ngClass]="{'is-invalid': listingForm.controls['description'].invalid && (listingForm.controls['description'].dirty || listingForm.controls['description'].touched)}"></textarea>
+
+  <div class="invalid-feedback"
+  *ngIf="listingForm.controls['description'].invalid && (listingForm.controls['description'].dirty || listingForm.controls['description'].touched)">
+  Molimo opišite rješenje.
+  </div>
+
+  <h5 class="mb-2 card-header mt-2">PONUDA CIJENE:</h5>
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <span class="input-group-text">€</span>
+    </div>
+    <input type="text" class="form-control" formControlName="price"
+    [ngClass]="{'is-invalid': listingForm.controls['price'].invalid && (listingForm.controls['price'].dirty || listingForm.controls['price'].touched)}">
+  </div>
+
+  <div class="invalid-feedback"
+  *ngIf="listingForm.controls['price'].invalid && (listingForm.controls['price'].dirty || listingForm.controls['price'].touched)">
+  Molimo unesite cijenu.
+  </div>
+
+  </div>
+  <button class="btn btn-primary w-100" [disabled]="!listingForm.valid" >Pošalji prijavu</button>
+</form>
+</ng-template>

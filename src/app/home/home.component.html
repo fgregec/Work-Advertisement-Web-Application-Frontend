@@ -1,0 +1,132 @@
+<div style="width: 90%;;" class="align-items-center justify-content-center m-auto py-5">
+  <div class="row w-100">
+    <div class="col-sm-6">
+      <div class="row mb-3">
+        <div class="col">
+          <h5 style="font-weight: 500; border: none;" class="me-2 mb-0 d-inline">PREGLEDAJ SVE MEŠTRE</h5>
+          <a [routerLink]="'/mestri'"><mat-icon>arrow_right_alt</mat-icon></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h1 class="display-3" style="text-transform: capitalize; font-weight: 500;">Pronađite <br>vašeg meštra</h1>
+          <p class="lead">Na brz i jednostavan način pronađite najbolje lokalne majstore za sve vaše potrebe</p>
+        </div>
+      </div>
+      <div class="row">
+          <form [formGroup]="searchForm" class="input-group my-3">
+
+          <mat-form-field style="margin-bottom: -1.25em;width: 20%; border-radius: 0; font-family: inherit;">
+            <mat-label>Pretraži po</mat-label>
+            <mat-select [(value)]="selected" (selectionChange)="searchFilterChange($event.value)">
+              <mat-option value="ime">Imenu</mat-option>
+              <mat-option value="grad">Gradu</mat-option>
+              <mat-option value="zanat">Zanatu</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <input type="text" class="form-control" [placeholder]="searchPlaceholder" aria-label="Username"
+            aria-describedby="basic-addon1" formControlName="searchBy">
+          <div class="input-group-text" style="background-color: #f7f7f9;">
+            <button class="btn btn-search px-3 py-2" (click)="search()">Pretraži</button>
+          </div>
+          <div class="input-group-text d-none" >
+           <mat-icon>search</mat-icon>
+          </div>
+          </form>
+        </div>
+    </div>
+    <div class="col">
+      <div class="row justify-content-end container ms-5 split-container">
+        <div class="split"></div>
+        <div class="split"></div>
+        <div class="split"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row d-none mestri">
+  <div class="col">
+  </div>
+</div>
+<div style="width: 90%;;" class="align-items-center justify-content-center m-auto py-5">
+  <div class="row">
+    <h5 class="partners" style="font-weight: 500;"><span>Naši partneri</span></h5>
+    <div class="row p-3">
+      <div class="col d-flex align-items-center">
+        <img
+          src="data:image/png;base64,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"
+          width="100%" style="opacity: 0.5;">
+      </div>
+      <div class="col">
+        <img
+          src="https://cdn.cookielaw.org/logos/34afb85d-49c9-4046-a3a8-45608bf41a3e/055221bb-80dd-461f-b3ea-41fb6bead5ee/1edee525-96af-4a0d-a306-d509b3e7e610/STRABAG_mit_Weissraum_WOP_RGB_200mm_r12.png"
+          width="100%" style="opacity: 0.5;">
+      </div>
+      <div class="col">
+        <img
+          src="https://www.planradar.com/wp-content/uploads/2022/07/kamgrad.png"
+          width="100%" style="opacity: 0.5;">
+      </div>
+      <div class="col">
+        <img
+          src="https://radnik.s2is.hr/wp-content/uploads/2020/07/radnik-01.png"
+          width="100%" style="opacity: 0.5;">
+      </div>
+      <div class="col">
+        <img
+          src="https://kova-promet.com/wp-content/uploads/Samoborka-logo-red.png"
+          width="100%" style="opacity: 0.5;">
+      </div>
+    </div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-5 ps-md-3">
+    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Tražilica</h2>
+        <p class="lead">Naša sofisticirani algoritam dopušta vam traženje meštra po bilokojem kriteriju.</p>
+      </div>
+    </div>
+    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Zarada</h2>
+        <p class="lead">Ukoliko već jeste ili tek krećete vašu karijeru, pomoću naše platforme možete vrlo lako pronaći
+          ponude za posao.</p>
+      </div>
+    </div>
+    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Analitika</h2>
+        <p class="lead">Pomoću alata koje naša platforma nudi, vizualno pregledajte na koje mjesece ste najviše
+          zaradili.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="mb-4 bg-body-tertiary rounded-3 ">
+      <div class="container-fluid p-5" id="jumbo-1">
+        <h1 class="display-5 fw-bold text-white">Pronađite vašeg meštra</h1>
+        <p class="col-md-8 fs-4 text-white ">Pregledajte naš opsežan popis kvalificiranih servisera u vašem gradu, filtrirajte po kategoriji ili nazivu i odaberite pravog za svoje specifične potrebe. Uštedite vrijeme i osigurajte kvalitetan posao odabirom s našeg pažljivo odabranog popisa stručnjaka. Nema više nagađanja, samo izvrsni rezultati.</p>
+        <button class="btn btn-primary my-3 px-5 fw-normal" type="button" [routerLink]="'/mestri'">Pretraži</button>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-bg-dark" id="jumbo-2">
+          <h2 style="color: white;">Objavite natječaj</h2>
+          <p class="lead">Jeste li serviser i tražite posao? Istražite najnovije ponude poslova za razne projekte popravka i obnove. Jednostavno kreirajte račun i počnite se prijavljivati ​​za poslove koji odgovaraju vašim vještinama i preferencijama. Poboljšajte svoju karijeru povezivanjem s klijentima na našoj platformi.</p>
+          <button class="btn btn-outline-light fw-normal" type="button" [routerLink]="'/natjecaji'">Pregledaj ponude za posao</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-body-tertiary border" id="jumbo-3">
+          <h2 >Pratite svoju zaradu </h2>
+          <p class="color-black">Pratite svoj napredak kao serviser pomoću naše sveobuhvatne analize zarade. Budite informirani o svojim prihodima, obavljenim poslovima i putanji rasta. Donosite informirane odluke kako biste poboljšali svoju izvedbu i povećali profit tijekom vremena.</p>
+          <button class="btn btn-dark fw-normal" type="button">Pregledajte nadzornu ploču zarade</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

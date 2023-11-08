@@ -1,0 +1,58 @@
+<div class="row m-5">
+    <div class="col-6">
+      <carousel [pauseOnFocus]="true">
+        <slide>
+          <img src="../../../assets/register_image.png" alt="First slide" style="display: block; width: 100%;" class="loginImage">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Dobrodošli!</h2>
+            <h3>Ukoliko tražite meštra, na pravom ste mjestu!</h3>
+          </div>
+        </slide>
+        <slide>
+          <img src="../../../assets/main-page-background.jpg" alt="Second slide" style="display: block; width: 100%;" class="loginImage">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Trebate popravak ili savjet?</h2>
+            <h3>Sigurni smo da Vam netko s naše liste meštara može pomoći!</h3>
+          </div>
+        </slide>
+        <slide>
+          <img src="../../../assets/register_image.png" alt="Third slide" style="display: block; width: 100%;" class="loginImage">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Ne čekajte!</h2>
+            <h3>Pronađite meštra već danas!</h3>
+          </div>
+        </slide>
+      </carousel>
+    </div>
+    <div class="col-6 container" style="margin:auto">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div>
+        <h4 class="text-center">PRIJAVA</h4>
+        <label for="inputEmail" class="mb-1">Email adresa</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email adresa" required formControlName="email">
+        </div>
+        <div class="invalid-feedback"
+        *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+          Unesite Email adresu!
+        </div>
+        <div>
+          <label class="mb-1">Lozinka</label>
+          <input type="password" class="form-control" placeholder="Lozinka" required formControlName="password">
+        </div>
+        <div class="invalid-feedback"
+        *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+          Unesite lozinku!
+        </div>
+        <div class="invalid-feedback"*ngIf="validInput">
+          Uneseni podaci su netočni!
+        </div>
+        <br>
+        <div>
+          <input type="submit" value="Prijava"class="btn btn-primary w-100" id="gradientButton" [disabled]="!loginForm.valid">
+        </div>
+        <div class="mt-2 text-center">
+          <label>Nemate račun? </label>
+          <a routerLink="/account/register" class="mx-1"><b>Registriraj Se</b></a>
+        </div>
+      </form>
+  </div>

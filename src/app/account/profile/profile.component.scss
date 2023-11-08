@@ -1,0 +1,57 @@
+.profile-image{
+    margin-bottom: 1em;
+
+    img{
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.invalid-feedback{
+    display: block !important;
+}
+
+.btn-update:disabled{
+    opacity: 0.5;
+}
+
+
+.btn-update:hover {
+    background-position: 100% 0;
+    -o-transition: all .75s ease-in-out;
+    -webkit-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out;
+}
+
+.btn-update {
+    opacity: 1;
+    color: black;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    cursor: pointer;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    -o-transition: all .75s ease-in-out;
+    -webkit-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out;
+}
+
+.btn-update:hover {
+    background-position: 100% 0;
+    -o-transition: all .75s ease-in-out;
+    -webkit-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out;
+}
+
+.btn-update:focus {
+    outline: none;
+}
+
+.btn-update{
+    background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+}

@@ -1,0 +1,82 @@
+
+<div class="ad-banner">
+</div>
+<div class="d-flex justify-content-center align-items-center m-5">
+  <div class="w-50">
+    <form [formGroup]="natjecajForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <div class="d-flex flex-row mb-2">
+        <h5 class="mb-1 greyout"><mat-icon class="me-1">warning</mat-icon>Emergency:</h5>
+        <mat-slide-toggle (change)="changeEmergency()"></mat-slide-toggle>
+        </div>
+        <div>
+        <div class="mb-2">
+          <h5 class="mb-1 greyout"><mat-icon class="me-1">work</mat-icon>Kategorija</h5>
+          <input type="text" class="form-control" matInput formControlName="category" [matAutocomplete]="auto1"
+            placeholder="Mehaničar">
+          <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete"
+            (optionSelected)="changeCategory($event.option.value)">
+            <mat-option *ngFor="let category of filteredCategories | async" [value]="category.name">
+              {{category.name}}
+            </mat-option>
+          </mat-autocomplete>
+          <div class="invalid-feedback"
+            *ngIf="natjecajForm.controls['category'].invalid && (natjecajForm.controls['category'].dirty || natjecajForm.controls['category'].touched)">
+            Morate odabrati kategoriju.
+          </div>
+      </div>
+        <div>
+          <div class="mb-2">
+            <h5 class="mb-1 greyout"><mat-icon class="location"> location_on</mat-icon> Lokacija:</h5>
+              <input type="text" class="form-control" matInput formControlName="county" [matAutocomplete]="auto"
+                placeholder="Primorsko-Goranska županija">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                (optionSelected)="changeCounty($event.option.value)">
+                <mat-option *ngFor="let county of filteredCounties | async" [value]="county.name">
+                  {{county.name}}
+                </mat-option>
+              </mat-autocomplete>
+              <div class="invalid-feedback"
+                *ngIf="natjecajForm.controls['county'].invalid && (natjecajForm.controls['county'].dirty || natjecajForm.controls['county'].touched)">
+                Morate odabrati županiju.
+              </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <input type="text" class="form-control" matInput formControlName="city" [matAutocomplete]="autoCity"
+            placeholder="Opatija" *ngIf="county">
+          <mat-autocomplete autoActiveFirstOption #autoCity="matAutocomplete" (optionSelected)="changeCity($event.option.value)">
+            <mat-option *ngFor="let grad of filteredCities | async" [value]="grad.name">
+              {{grad.name}}
+            </mat-option>
+          </mat-autocomplete>
+          <div class="invalid-feedback"
+            *ngIf="natjecajForm.controls['city'].invalid && (natjecajForm.controls['city'].dirty || natjecajForm.controls['city'].touched)">
+            Morate odabrati grad.
+          </div>
+        </div>
+        <div>
+          <div class="mb-2">
+            <h5 class="mb-1 greyout"><mat-icon> chat_bubble</mat-icon> Opis natječaja:</h5>
+            <textarea class="form-control" type="text" rows="5" formControlName="description"
+            [ngClass]="{'is-invalid': natjecajForm.controls['description'].invalid && (natjecajForm.controls['description'].dirty || natjecajForm.controls['description'].touched)}"></textarea>
+            <div class="invalid-feedback"
+            *ngIf="natjecajForm.controls['description'].invalid && (natjecajForm.controls['description'].dirty || natjecajForm.controls['description'].touched)">
+            Molimo opišite natječaj.
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <h5 class="mb-2 greyout"><mat-icon>image</mat-icon> Priložite slike:</h5>
+          <div>
+            <ngx-awesome-uploader [adapter]="filePickerAdapter" [captions]="uploaderCaptions">
+            </ngx-awesome-uploader>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" id="gradientButton" class="w-100 btn" [disabled]="!natjecajForm.valid">KREIRAJ NATJEČAJ</button>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,41 @@
+<div class="ad-banner">
+</div>
+<div class="row mb-2">
+  <div class="col-sm-3 border px-4 py-3">
+      <div class="border-bottom mt-2 ms-2 p-2">
+      <label for="category" class="text-uppercase fs-5 text-info">Emergency:</label>
+      <mat-slide-toggle (change)="changeEmergencyValue()"></mat-slide-toggle>
+      </div>
+      <app-filter-bar
+      (citiesSelectedEvent)="filterByCity($event)"
+      (countiesSelectedEvent)="filterByCounty($event)"
+      (categoriesSelectedEvent)="filterByCategory($event)">
+    </app-filter-bar>
+  </div>
+    <div class="col">
+        <div class="row d-flex align-items-center py-3"  style="width: 100%;">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>SORTIRAJ</mat-label>
+              <mat-select (selectionChange)="changeSort($event.value)" [value]="sortOptions[1]">
+                <mat-option *ngFor="let option of sortOptions" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col d-flex">
+            <mat-paginator [pageSizeOptions]="pageSizeOptions" [pageIndex]="0" [length]="paginatedListings.count" (page)="onPageChanged($event)"></mat-paginator>
+          </div>
+            <hr>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <div *ngFor="let item of paginatedListings.data" style="width:70%">
+            <app-listing [listing]="item"></app-listing>
+          </div>
+        </div>
+        </div>
+    </div>
+    <button mat-fab class="fab" [routerLink]="['new']">
+      <mat-icon>add</mat-icon>
+    </button>

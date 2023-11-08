@@ -1,0 +1,70 @@
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        <span class="text-uppercase fs-5 text-info">Zanat</span>
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse  show">
+      <div class="accordion-body">
+        <div class="d-flex flex-column mt-2 ms-2">
+          <input class="form-control border-bottom" #category (keyup)="filterCategory(category.value)"
+            placeholder="Unesite kategoriju" type="text">
+          <p *ngFor="let category of filteredCategories | async" class="mb-0">
+            <mat-checkbox [color]="'primary'"  (change)="categorySelected(category.name, $event.checked)">
+              {{category.name}}
+            </mat-checkbox>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne">
+        <span class="text-uppercase fs-5 text-info">Županija</span>
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        <div class="d-flex flex-column mt-2 ms-2">
+          <input class="form-control border-bottom" #county (keyup)="filterCounty(county.value)"
+            placeholder="Unesite ime županije" type="text">
+          <p *ngFor="let county of filteredCounties | async" class="mb-0">
+            <mat-checkbox (change)="countySelected(county.name, $event.checked)" [color]="'warn'">
+              {{county.name}}
+            </mat-checkbox>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseOne">
+        <span class="text-uppercase fs-5 text-info">Grad</span>
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse ">
+      <div class="accordion-body">
+        <div class="d-flex flex-column mt-2 ms-2">
+          <input class="form-control border-bottom" #city (keyup)="filterCity(city.value)"
+            placeholder="Unesite ime grada" type="text">
+          <p *ngFor="let city of filteredCities | async" class="mb-0">
+            <mat-checkbox [checked]="isCitySelected(city)" (change)="citySelected(city.name, $event.checked)">
+              {{city.name}}
+            </mat-checkbox>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+
+  </div>
+
+</div>

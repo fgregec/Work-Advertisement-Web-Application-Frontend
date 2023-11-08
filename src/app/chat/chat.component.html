@@ -1,0 +1,10 @@
+<div class="container-fluid" style="height: 80vh;">
+    <div class="row h-100">
+        <div class="w-25" style="border-right: 1px solid #EFEFEF;">
+            <app-chat-history [chats]="chatsMeta" (roomMetaSelected)="roomSelected($event)"></app-chat-history>
+        </div>
+        <div class="col chat-room-container">
+            <app-chat-room [chatRoom]="chatRoom" [userId]="currentUserId" (messageSent)="refreshMetas()"></app-chat-room>
+        </div>
+    </div>
+</div>

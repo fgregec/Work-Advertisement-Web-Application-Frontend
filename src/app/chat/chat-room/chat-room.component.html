@@ -1,0 +1,22 @@
+<div class="w-100 p-0 my-2">
+    <input type="text" class="form-control w-100" placeholder="Pretražite korisnike" aria-label="Text" matInput
+        [formControl]="myControl" [matAutocomplete]="auto" (input)="search(myControl.value)">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option.id" (onSelectionChange)="chat(option)">
+            {{option.firstName}} {{option.lastName}}
+        </mat-option>
+    </mat-autocomplete>
+</div>
+<div class="chat-room d-flex flex-column" style="height: 90%;">
+    <div class="text-end">
+        <h5 class="fw-bold" style="letter-spacing: 1px; font-size: larger;">{{chatRoom?.displayName}}</h5>
+    </div>
+    <div class="chat-messages flex-grow-1 overflow-auto" #scrollMe>
+        <app-message *ngFor="let message of chatRoom?.messages" [message]="message"
+            [currentUserId]="userId"></app-message>
+    </div>
+    <div class="chat-input mt-2">
+        <input #message type="text" class="form-control" placeholder="Type your message..." [hidden]="!chatRoom"
+            (keyup.enter)="sentMessage(message.value)" [(ngModel)]="searchValue">
+    </div>
+</div>

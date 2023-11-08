@@ -1,0 +1,124 @@
+<div class="container my-5" *ngIf="user">
+  <div class="row">
+    <div class="col-3 text-center">
+      <div class="profile-image">
+        <img src="../../../assets/profile.png" height="200" width="200">
+      </div>
+      <h3>{{user.firstName}} {{user.lastName}}</h3>
+      <div class="btn btn-info btn-sm my-2 fw-normal" style="letter-spacing: 1.5px;">Upload photo</div>
+      <p class="text-center">{{(user.isMestar) ? 'Meštar' : 'Korisnik'}}</p>
+      <hr class="my-4">
+
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action">Recenzije</a>
+        <a href="#" class="list-group-item list-group-item-action">Analitika</a>
+      </div>
+
+    </div>
+    <div class="col-9">
+      <form [formGroup]="profileForm"  class="needs-validation">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="firstName" class="form-label">Ime</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+            <div class="invalid-feedback"
+              *ngIf="profileForm.controls['firstName'].invalid && (profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)">
+              Ime nesmije biti prazno.
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="lastName" class="form-label">Prezime</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+            <div class="invalid-feedback"
+              *ngIf="profileForm.controls['lastName'].invalid && (profileForm.controls['lastName'].dirty || profileForm.controls['lastName'].touched)">
+              Prezime nesmije biti prazno.
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required>
+            <div class="invalid-feedback"
+              *ngIf="profileForm.controls['email'].invalid && (profileForm.controls['email'].dirty || profileForm.controls['email'].touched)">
+              Unesite ispravan email.
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="county" class="form-label">Županija</label>
+            <input type="text" class="form-control" matInput formControlName="county" [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+              (optionSelected)="changeCounty($event.option.value)">
+              <mat-option *ngFor="let county of filteredCounties | async" [value]="county.name">
+                {{county.name}}
+              </mat-option>
+            </mat-autocomplete>
+            <div class="invalid-feedback"
+              *ngIf="profileForm.controls['county'].invalid && (profileForm.controls['county'].dirty || profileForm.controls['county'].touched)">
+              Morate odabrati županiju.
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="city" class="form-label">Grad</label>
+            <input type="text" class="form-control" matInput formControlName="city" [matAutocomplete]="autoCity">
+            <mat-autocomplete autoActiveFirstOption #autoCity="matAutocomplete" (optionSelected)="changeCity($event.option.value)">
+              <mat-option *ngFor="let grad of filteredCities | async" [value]="grad.name">
+                {{grad.name}}
+              </mat-option>
+            </mat-autocomplete>
+            <div class="invalid-feedback"
+              *ngIf="profileForm.controls['city'].invalid && (profileForm.controls['city'].dirty || profileForm.controls['city'].touched)">
+              Morate odabrati grad.
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="password" class="form-label">Nova lozinka </label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+            <div class="invalid-feedback"
+              *ngIf="profileForm.get('password')?.invalid && (profileForm.get('password')?.dirty || profileForm.get('password')?.touched)">
+
+              <div *ngIf="profileForm.get('password')?.hasError('pattern')">
+                Lozinka mora sadržavati najmanje jedno malo slovo, jedno veliko slovo, jedan broj i jedan poseban znak
+                te dužina mora biti dulja od 8.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="confirmPassword" class="form-label">Potvrdi lozinku</label>
+            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+              (keyup)="checkPassword()">
+            <div class="invalid-feedback"
+              *ngIf="(profileForm.get('confirmPassword')?.dirty || profileForm.get('confirmPassword')?.touched) && !confirmPasswordValid && profileForm.get('password')?.value != ''">
+              Lozinke nisu iste!
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <button class="w-100 btn btn-success fw-normal btn-update" type="submit" (click)="onSubmit()" [disabled]="!(profileForm.valid && profileForm.dirty)">Ažuriraj profil</button>
+
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-3 text-center">
+
+      </div>
+      <div class="col-9 ">
+
+      </div>
+    </div>
+  </div>
+
+</div>

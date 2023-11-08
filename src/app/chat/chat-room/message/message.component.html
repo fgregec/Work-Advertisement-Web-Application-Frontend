@@ -1,0 +1,4 @@
+<div class="message" [ngClass]="{'me': message.senderId === currentUserId, 'other': message.senderId !== currentUserId}">
+    <p class="message-content">{{message.content}}</p>
+    <span class="message-time text-muted">{{message.time | date:'HH:mm'}}</span>
+</div>

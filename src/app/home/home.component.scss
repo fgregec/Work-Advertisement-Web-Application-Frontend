@@ -1,0 +1,213 @@
+.main {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url("../../assets/main-page-background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 95vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search {
+    transition: all 0.25s ease-in-out;
+    background-color: var(--bs-gray-300);
+    height: fit-content;
+    width: 80%;
+    box-shadow: 0 0 20px black;
+}
+
+.search label {
+    padding-inline: 15px;
+}
+
+.search:focus-within {
+    box-shadow: 0 10px 20px black;
+}
+
+.split-container {
+    column-gap: 35px;
+    margin-bottom: 25px;
+
+}
+
+.split {
+    background-image: url("../../assets/main-page-background.jpg");
+    background-attachment: fixed;
+    width: 30%;
+    height: 600px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+}
+
+@media (min-width: 1000px) {
+    img {
+        width: 50%;
+    }
+
+}
+
+@media(max-width: 1600px) {
+    .split{
+        width: 40%;
+    }
+
+    .split:nth-of-type(3){
+        display: none;
+    }
+}
+
+
+@media (max-width: 1300px) {
+    .split-container {
+        column-gap: 20px;
+    }
+
+    mat-form-field {
+        width: 100% !important;
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .split-container {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+    }
+
+    .split {
+        width: 40%;
+    }
+
+    .split:nth-of-type(3) {
+        display: none !important;
+    }
+
+
+}
+
+@media (max-width: 800px) {
+    .col-sm-6 {
+        width: 100%;
+    }
+
+    .split-container {
+        margin-left: 0px !important;
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        z-index: -1;
+        left: 0;
+        padding: 0;
+        opacity: 0.5;
+    }
+
+    .input-group-text:nth-of-type(1) {
+        display: none !important;
+    }
+
+    .input-group-text:nth-of-type(2) {
+        display: block !important;
+    }
+
+    .split {
+        display: none !important;
+    }
+
+    .mestri {
+        background-image: url('../../assets/main-page-background.jpg');
+        display: block !important;
+        background-position: left;
+        background-size: cover;
+        width: 100%;
+        height: 500px;
+        margin: auto;
+    }
+
+
+}
+
+
+.btn-search {
+    opacity: 1;
+    color: black;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-radius: 50px;
+    background-size: 300% 100%;
+
+    -o-transition: all .75s ease-in-out;
+    -webkit-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out;
+}
+
+.btn-search:hover {
+    background-position: 100% 0;
+    -o-transition: all .75s ease-in-out;
+    -webkit-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out;
+}
+
+.btn-search:focus {
+    outline: none;
+}
+
+.btn-search {
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
+    box-shadow: 0 4px 5px 0 rgba(229, 66, 10, 0.25);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+mat-option,
+mat-select {
+    font-family: 'Roboto', 'sans-serif';
+}
+
+mat-icon{
+    cursor: pointer;
+    vertical-align: bottom;
+}
+
+h5 {
+    width: 100%;
+    text-align: start;
+    padding-left: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+h5 span {
+    background: #fff;
+    padding: 0 10px;
+}
+
+#jumbo-1{
+    background-image: url('../../assets/suburbs.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#jumbo-2{
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('../../assets/job_offers.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+
+#jumbo-3{
+    background-image: url('../../assets/analtytics_home.png') ;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+

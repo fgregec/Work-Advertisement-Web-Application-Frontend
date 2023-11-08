@@ -1,0 +1,11 @@
+<div class="chat-meta d-flex align-items-center p-2 my-2" (click)="openRoom(chat.roomId)">
+    <img src="../../../../assets/profile.png" class="avatar rounded-circle me-3">
+    <div class="chat-info flex-grow-1">
+        <h5 class="mb-1">{{chat.firstName}} {{chat.lastName}}</h5>
+        <span class="text-muted">{{chat.lastMessage}}</span>
+    </div>
+    <div class="chat-time text-muted">
+        {{chat.lastMessageTime | date:'HH:mm'}}
+    </div>
+</div>
+<mat-divider></mat-divider>

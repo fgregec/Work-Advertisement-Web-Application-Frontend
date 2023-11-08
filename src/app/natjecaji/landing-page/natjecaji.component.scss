@@ -1,0 +1,33 @@
+.text-info{
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+.mat-mdc-slide-toggle.mat-accent {
+  --mdc-switch-selected-focus-handle-color: #1f9bcf;
+  --mdc-switch-selected-hover-handle-color: #1f9bcf;
+  --mdc-switch-selected-pressed-handle-color: #1f9bcf;
+  --mdc-switch-selected-focus-track-color: #1f9bcf;
+  --mdc-switch-selected-hover-track-color: #1f9bcf;
+  --mdc-switch-selected-pressed-track-color:#1f9bcf;
+  --mdc-switch-selected-focus-state-layer-color: #1f9bcf;
+  --mdc-switch-selected-handle-color: #1f9bcf;
+  --mdc-switch-selected-hover-state-layer-color: #1f9bcf;
+  --mdc-switch-selected-pressed-state-layer-color: #1f9bcf;
+  --mdc-switch-selected-track-color: #1f9bcf;
+  --mdc-switch-unselected-handle-color: black;
+}
+
+.fab{
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+}
+.ad-banner{
+    height: 200px;
+    background-image: url("../../../assets/NoviProjekt.png");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

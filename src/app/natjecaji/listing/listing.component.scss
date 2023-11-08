@@ -1,0 +1,14 @@
+.listing-component:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 15px 15px rgba($color: #000000, $alpha: 0.25);
+}
+.listing-component{
+  cursor: pointer;
+  transition: all .25s ease-in-out;
+}
+.location {
+  color: #0e4ac2;
+}
+mat-icon {
+  vertical-align: bottom;
+}

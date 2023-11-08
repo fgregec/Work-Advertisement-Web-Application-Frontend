@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+*:not(mat-icon) {
+    font-family: 'DM Sans', sans-serif !important;
+}
+
+mat-icon {
+    vertical-align: bottom;
+}
+
+.mestar-name {
+    font-family: 'DM Sans', sans-serif !important;
+    color: black;
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.mestar-name:hover {
+    color: rgba($color: #000000, $alpha: 0.75);
+}
+
+.number-of-reviews {
+    color: #9b9b9b;
+    font-size: x-small;
+    vertical-align: middle;
+}
+
+.location {
+    color: #0e4ac2;
+}
+
+.categories{
+    color: #6e6e6e;
+}
+
+.gold{
+    color:gold
+}
+
+.mestar-component{
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+}
+
+.mestar-component:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 15px 15px rgba($color: #000000, $alpha: 0.25);
+
+    .location-pin span{
+        color: #4984f8;
+    }
+}

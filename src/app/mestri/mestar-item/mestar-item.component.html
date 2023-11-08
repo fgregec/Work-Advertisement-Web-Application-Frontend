@@ -1,0 +1,28 @@
+<div class="mestar-component">
+    <div class="row g-0 border overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col-auto d-none d-lg-block">
+            <img src="../../../assets/meštar.png" class="bd-placeholder-img" width="250" height="250">
+        </div>
+        <div class="col px-4 pt-4 d-flex flex-column position-static">
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="mestar-name">{{mestar.firstName + ' ' + mestar.lastName}}</span>
+            </div>
+            <div class="mb-auto categories">
+                <mat-icon class="me-1">work</mat-icon>
+                <span class="text-inline mb-0">{{categories}} </span>
+                <div class="location">
+                 <mat-icon class="me-1">location_on</mat-icon>
+                 <span class="fw-bold">{{mestar.city.name}}<span class="mr-1 number-of-reviews" >{{mestar.distance}}</span></span>
+                </div>
+            </div>
+            <p class="card-text mb-auto"> {{mestar.description}} </p>
+            <div class="d-flex align-items-center justify-content-end pb-2 gold">
+                <mat-icon *ngFor="let e of [].constructor(fullStars) ">star</mat-icon>
+                <mat-icon *ngFor="let e of [].constructor(halfStars) ">star_half</mat-icon>
+                <mat-icon *ngFor="let e of [].constructor(emptyStars) ">star_border</mat-icon>
+                <span class="number-of-reviews">({{mestar.reviews}})</span>
+            </div>
+        </div>
+    </div>
+</div>
+

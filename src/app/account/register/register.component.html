@@ -1,0 +1,101 @@
+<div class="row ">
+  <div class="col-5" id="registerImage">
+    <span></span>
+  </div>
+  <div class="col container p-5">
+    <h2>Registracija</h2>
+    <p class="text-muted">Dovedite vaš san u stvarnost! </p>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="needs-validation">
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="firstName" class="form-label">Ime</label>
+          <input type="text" class="form-control" id="firstName" formControlName="firstName" required
+            placeholder="Ivan">
+          <div class="invalid-feedback"
+            *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)">
+            Ime nesmije biti prazno.
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="lastName" class="form-label">Prezime</label>
+          <input type="text" class="form-control" id="lastName" formControlName="lastName" required
+            placeholder="Horvat">
+          <div class="invalid-feedback"
+            *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">
+            Prezime nesmije biti prazno.
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required
+            placeholder="moj@email.com">
+          <div class="invalid-feedback"
+            *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+            Unesite ispravan email.
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="county" class="form-label">Županija</label>
+          <input type="text" class="form-control" matInput formControlName="county" [matAutocomplete]="auto"
+            placeholder="Primorsko-Goranska županija">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+            (optionSelected)="changeCounty($event.option.value)">
+            <mat-option *ngFor="let county of filteredCounties | async" [value]="county.name">
+              {{county.name}}
+            </mat-option>
+          </mat-autocomplete>
+          <div class="invalid-feedback"
+            *ngIf="registerForm.controls['county'].invalid && (registerForm.controls['county'].dirty || registerForm.controls['county'].touched)">
+            Morate odabrati županiju.
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="city" class="form-label">Grad</label>
+          <input type="text" class="form-control" matInput formControlName="city" [matAutocomplete]="autoCity"
+            placeholder="Opatija">
+          <mat-autocomplete autoActiveFirstOption #autoCity="matAutocomplete" (optionSelected)="changeCity($event.option.value)">
+            <mat-option *ngFor="let grad of filteredCities | async" [value]="grad.name">
+              {{grad.name}}
+            </mat-option>
+          </mat-autocomplete>
+          <div class="invalid-feedback"
+            *ngIf="registerForm.controls['city'].invalid && (registerForm.controls['city'].dirty || registerForm.controls['city'].touched)">
+            Morate odabrati grad.
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <label for="password" class="form-label">Lozinka</label>
+          <input type="password" class="form-control" id="password" formControlName="password" required
+            placeholder="******************">
+          <div class="invalid-feedback"
+            *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+
+            <div *ngIf="registerForm.get('password')?.hasError('pattern')">
+              Lozinka mora sadržavati najmanje jedno malo slovo, jedno veliko slovo, jedan broj i jedan poseban znak
+              te dužina mora biti dulja od 8.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 mt-4">
+          <div class="form-check form-switch" style="padding-left:2.5em">
+            <input class="form-check-input mt-1 p-" type="checkbox" role="switch" id="switch"
+              (change)="checkBoxValueChanged()">
+            <label for="switch">Registracija kao {{textValue}}</label>
+          </div>
+        </div>
+        <div class="col mt-4">
+          <input type="submit" value="Registracija" class="btn btn-success w-100" id="gradientButton" [disabled]="!registerForm.valid">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+
+#inputGroupSelect01{
+    border-radius: 30px;
+}
+
+#inputGroupSelect01::placeholder{
+    font-style: italic;
+}
+
+.search {
+    transition: all 0.25s ease-in-out;
+    background-color: var(--bs-gray-300);
+    height: fit-content;
+    width: 80%;
+    box-shadow: 0 0 20px black;
+}
+
+.search label {
+    padding-inline: 15px;
+}
+
+.search:focus-within {
+    box-shadow: 0 10px 20px black;
+}
+
+
+
+.btn-search {
+    opacity: 1;
+    color: black;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-radius: 50px;
+    background-size: 300% 100%;
+
+    -o-transition: all .75s ease-in-out;
+    -webkit-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out;
+}
+
+.btn-search:hover {
+    background-position: 100% 0;
+    -o-transition: all .75s ease-in-out;
+    -webkit-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out;
+}
+
+.btn-search:focus {
+    outline: none;
+}
+
+.btn-search {
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
+    box-shadow: 0 4px 5px 0 rgba(229, 66, 10, 0.25);
+}
+
+.ad-banner{
+    height: 200px;
+    background-image: url("../../assets/NoviProjekt.png");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

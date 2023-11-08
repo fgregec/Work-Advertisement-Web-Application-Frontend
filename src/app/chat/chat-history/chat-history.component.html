@@ -1,0 +1,10 @@
+<div class="h-100 w-100 d-flex justify-content-start flex-column">
+    <div class="m-3">
+        <mat-icon style="vertical-align: sub;" class="me-3 text-dark">inbox</mat-icon>
+        <h1 class="d-inline text-warning">Inbox</h1>
+    </div>
+    <app-chat-meta *ngFor="let chat of chats" [chat]="chat" (roomSelected)="roomSelected($event)"></app-chat-meta>
+    <div *ngIf="chats.length == 0 || !chats">
+        <span class="text-muted ms-2">You have no messages</span>
+    </div>
+</div>
